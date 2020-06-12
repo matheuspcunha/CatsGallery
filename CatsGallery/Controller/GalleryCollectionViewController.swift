@@ -12,42 +12,48 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
 
-    lazy var viewModel = GalleryViewModel()
+    private lazy var viewModel = GalleryViewModel()
 
     // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.collectionViewLayout = createLayout()
+        configureLayout()
+        configureRefreshControl()
         viewModel.imagesLoaded = imagesLoaded
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.loadImages()
+        super.viewWillAppear(animated)
+        loadImages()
     }
 
-    func imagesLoaded() {
+    private func imagesLoaded() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     
-    private func createLayout() -> UICollectionViewLayout {
-         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
-                                               heightDimension: .fractionalHeight(1.0))
+    @objc func loadImages() {
+        self.viewModel.loadImages()
+    }
+    
+    private func configureLayout() {
+         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
          let item = NSCollectionLayoutItem(layoutSize: itemSize)
-         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5,
-                                                      bottom: 5, trailing: 5)
-         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .fractionalWidth(0.33))
-         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                        subitem: item, count: 3)
+         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.33))
+         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
          let section = NSCollectionLayoutSection(group: group)
          let layout = UICollectionViewCompositionalLayout(section: section)
-        
-         return layout
+        collectionView.collectionViewLayout = layout
      }
+    
+    private func configureRefreshControl () {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(loadImages), for: .valueChanged)
+    }
     
     // MARK: UICollectionViewDataSource
     

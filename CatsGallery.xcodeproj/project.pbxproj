@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		966D5B33249185B6008871AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966D5B32249185B6008871AB /* AppDelegate.swift */; };
-		966D5B3A249185B6008871AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966D5B38249185B6008871AB /* Main.storyboard */; };
+		966D5B3A249185B6008871AB /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966D5B38249185B6008871AB /* Gallery.storyboard */; };
 		966D5B3C249185BD008871AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966D5B3B249185BD008871AB /* Assets.xcassets */; };
 		966D5B3F249185BD008871AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 966D5B3D249185BD008871AB /* LaunchScreen.storyboard */; };
 		966D5B4C24918822008871AB /* ImgurAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966D5B4B24918822008871AB /* ImgurAPI.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		966D5B2F249185B5008871AB /* Cats Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cats Gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		966D5B32249185B6008871AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		966D5B39249185B6008871AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		966D5B39249185B6008871AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Gallery.storyboard; sourceTree = "<group>"; };
 		966D5B3B249185BD008871AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		966D5B3E249185BD008871AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		966D5B40249185BD008871AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		966D5B48249187A5008871AB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				966D5B38249185B6008871AB /* Main.storyboard */,
+				966D5B38249185B6008871AB /* Gallery.storyboard */,
 				966F79D12492D96300CC05D0 /* GalleryCollectionViewCell.swift */,
 			);
 			path = View;
@@ -182,7 +182,7 @@
 			files = (
 				966D5B3F249185BD008871AB /* LaunchScreen.storyboard in Resources */,
 				966D5B3C249185BD008871AB /* Assets.xcassets in Resources */,
-				966D5B3A249185B6008871AB /* Main.storyboard in Resources */,
+				966D5B3A249185B6008871AB /* Gallery.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,12 +207,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		966D5B38249185B6008871AB /* Main.storyboard */ = {
+		966D5B38249185B6008871AB /* Gallery.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				966D5B39249185B6008871AB /* Base */,
 			);
-			name = Main.storyboard;
+			name = Gallery.storyboard;
 			sourceTree = "<group>";
 		};
 		966D5B3D249185BD008871AB /* LaunchScreen.storyboard */ = {

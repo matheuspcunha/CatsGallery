@@ -16,7 +16,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     
     func configure(with viewModel: GalleryCellViewModel) {
         self.catImage.image = placeholder
-        self.catImage.layer.cornerRadius = 10
+        self.catImage.layer.cornerRadius = 8
         
         ImageCache.getImage(with: viewModel.url!) { [weak self] (image) in
             guard let self = self else {return}

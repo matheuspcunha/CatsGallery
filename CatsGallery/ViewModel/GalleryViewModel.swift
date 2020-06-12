@@ -10,7 +10,7 @@ import Foundation
 
 class GalleryViewModel {
     
-    var images: [Image] = [] {
+    private var images: [Image] = [] {
         didSet {
             imagesLoaded?()
         }
@@ -34,7 +34,7 @@ class GalleryViewModel {
         images.count
     }
     
-    func getImage(at indexPath: IndexPath) -> Image {
+    private func getImage(at indexPath: IndexPath) -> Image {
         return images[indexPath.row]
     }
     

@@ -38,7 +38,6 @@ class ImgurAPI {
     private init() {}
     
     static func getImages(onComplete: @escaping (Result<[Image], APIError>) -> Void) {
-        
         guard let url = URL(string: path) else {
             return onComplete(.failure(.invalidURL))
         }
