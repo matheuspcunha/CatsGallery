@@ -17,6 +17,6 @@ class GalleryCellViewModel {
     }
     
     var url: URL? {
-        image.link
+        return image.link
     }
 }

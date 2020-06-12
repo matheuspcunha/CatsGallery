@@ -31,7 +31,7 @@ class GalleryViewModel {
     }
     
     func count() -> Int {
-        images.count
+        return images.count
     }
     
     private func getImage(at indexPath: IndexPath) -> Image {
