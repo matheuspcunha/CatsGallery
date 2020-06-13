@@ -26,7 +26,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func prepareForReuse() {
+    override func prepareForReuse() { 
         super.prepareForReuse()
         self.catImage.image = nil
     }
