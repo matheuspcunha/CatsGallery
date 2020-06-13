@@ -12,6 +12,8 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
 
+    @IBOutlet weak var noImagesLabel: UILabel!
+    
     private lazy var viewModel = GalleryViewModel()
 
     // MARK: - Methods
@@ -30,6 +32,7 @@ class GalleryCollectionViewController: UICollectionViewController {
 
     private func imagesLoaded() {
         DispatchQueue.main.async {
+            self.noImagesLabel.isHidden = true
             self.collectionView.reloadData()
             self.collectionView.refreshControl?.endRefreshing()
         }
