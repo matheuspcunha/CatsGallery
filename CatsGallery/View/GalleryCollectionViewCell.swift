@@ -27,6 +27,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        self.catImage.image = placeholder
+        super.prepareForReuse()
+        self.catImage.image = nil
     }
 }
