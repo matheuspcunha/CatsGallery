@@ -14,6 +14,8 @@ class ImageCache {
     
     private static let cache = NSCache<NSString, UIImage>()
     
+    private static var responses = [URL: [(UIImage?) -> ()]]()
+    
     // MARK: - Methods
     
     static func getImage(with url: URL, onComplete: @escaping (UIImage?) -> ()) {
@@ -26,18 +28,28 @@ class ImageCache {
     
     private static func load(with url: URL, onComplete: @escaping (UIImage?) -> ()) {
         let task = URLSession.shared.dataTask(with: url) {data, response, error in
-            var image: UIImage?
-            
-            if let data = data {
-                image = UIImage(data: data)
+
+            if responses[url] != nil {
+                responses[url]?.append(onComplete)
+                return
+            } else {
+                responses[url] = [onComplete]
             }
-        
-            if let image = image {
-                cache.setObject(image, forKey: url.absoluteString as NSString)
+
+            guard let data = data, let image = UIImage(data: data),
+            let blocks = self.responses[url] else {
+                DispatchQueue.main.async {
+                    onComplete(nil)
+                }
+                return
             }
-            
-            DispatchQueue.main.async {
-                onComplete(image)
+
+            cache.setObject(image, forKey: url.absoluteString as NSString)
+
+            for block in blocks {
+                DispatchQueue.main.async {
+                    block(image)
+                }
             }
         }
         task.resume()
